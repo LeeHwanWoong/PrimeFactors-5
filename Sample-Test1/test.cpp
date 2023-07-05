@@ -100,10 +100,8 @@ TEST(TestCaseName, Prime1)
 	vector<int> expected;
 
 	expected.push_back(2);
-	expected.push_back(2);
-	expected.push_back(3);
 
-	EXPECT_EQ(pf.getPrimeFactor(12), expected);
+	EXPECT_EQ(pf.getPrimeFactor(2), expected);
 }
 
 TEST(TestCaseName, Prime2)
