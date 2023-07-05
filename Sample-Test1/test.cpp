@@ -8,7 +8,7 @@ TEST(TestCaseName, TestName) {
   EXPECT_EQ(Calc::calMinus(2,3), 1);
 }
 
-TEST(TestCaseName, fibo) {
+TEST(TC_FIBO, fibo) {
 	Fibo* f = new Fibo();
 
 	EXPECT_EQ(f->fibo(0), 0);
@@ -23,7 +23,7 @@ TEST(TestCaseName, fibo) {
 	EXPECT_EQ(f->fibo(9), 34);
 }
 
-TEST(TestCaseName, bank)
+TEST(TC_ACCOUNT, bank)
 {
 	Bank b;
 
@@ -33,7 +33,7 @@ TEST(TestCaseName, bank)
 	EXPECT_EQ(20000, b.getAccount());
 }
 
-TEST(TestCaseName, bankwithdraw)
+TEST(TC_ACCOUNT, bankwithdraw)
 {
 	Bank b(20000);
 
@@ -43,7 +43,7 @@ TEST(TestCaseName, bankwithdraw)
 	EXPECT_EQ(10000, b.getAccount());
 }
 
-TEST(TestCaseName, bankdeposit)
+TEST(TC_ACCOUNT, bankdeposit)
 {
 	Bank b(30000);
 
@@ -53,7 +53,7 @@ TEST(TestCaseName, bankdeposit)
 	EXPECT_EQ(50000, b.getAccount());
 }
 
-TEST(TestCaseName, Profit_5percent)
+TEST(TC_ACCOUNT, Profit_5percent)
 {
 	Bank b(10000);
 
@@ -63,7 +63,7 @@ TEST(TestCaseName, Profit_5percent)
 	EXPECT_EQ(10500, b.getAccount());
 }
 
-TEST(TestCaseName, setProfit)
+TEST(TC_ACCOUNT, setProfit)
 {
 	Bank b(10000);
 
@@ -74,7 +74,7 @@ TEST(TestCaseName, setProfit)
 	EXPECT_EQ(11000, b.getAccount());
 }
 
-TEST(TestCaseName, AfterNYear)
+TEST(TC_ACCOUNT, AfterNYear)
 {
 	Bank b(10000);
 
@@ -86,7 +86,7 @@ TEST(TestCaseName, AfterNYear)
 	EXPECT_EQ(14641, b.profit_NYear(4));
 }
 
-TEST(TestCaseName, Prime0)
+TEST(PRIME_TEST, Prime0)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -94,7 +94,7 @@ TEST(TestCaseName, Prime0)
 	EXPECT_EQ(pf.getPrimeFactor(1), expected);
 }
 
-TEST(TestCaseName, Prime1)
+TEST(PRIME_TEST, Prime1)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -104,7 +104,7 @@ TEST(TestCaseName, Prime1)
 	EXPECT_EQ(pf.getPrimeFactor(2), expected);
 }
 
-TEST(TestCaseName, Prime2)
+TEST(PRIME_TEST, Prime2)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -114,7 +114,7 @@ TEST(TestCaseName, Prime2)
 	EXPECT_EQ(pf.getPrimeFactor(3), expected);
 }
 
-TEST(TestCaseName, Prime3)
+TEST(PRIME_TEST, Prime3)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -125,7 +125,7 @@ TEST(TestCaseName, Prime3)
 	EXPECT_EQ(pf.getPrimeFactor(4), expected);
 }
 
-TEST(TestCaseName, Prime4)
+TEST(PRIME_TEST, Prime4)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -136,7 +136,7 @@ TEST(TestCaseName, Prime4)
 	EXPECT_EQ(pf.getPrimeFactor(6), expected);
 }
 
-TEST(TestCaseName, Prime5)
+TEST(PRIME_TEST, Prime5)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -147,7 +147,7 @@ TEST(TestCaseName, Prime5)
 	EXPECT_EQ(pf.getPrimeFactor(9), expected);
 }
 
-TEST(TestCaseName, Prime6)
+TEST(PRIME_TEST, Prime6)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -157,4 +157,65 @@ TEST(TestCaseName, Prime6)
 	expected.push_back(3);
 
 	EXPECT_EQ(pf.getPrimeFactor(12), expected);
+}
+
+TEST(TC_BASEBALL, BaseBall1)
+{
+	BaseBallGame bbg("456");
+	Result res = bbg.getResolve("456");
+
+	EXPECT_EQ(res.resolved, true);
+	EXPECT_EQ(res.strikes, 3);
+	EXPECT_EQ(res.balls, 0);
+}
+
+TEST(TC_BASEBALL, BaseBall2)
+{
+	BaseBallGame bbg("456");
+	Result res = bbg.getResolve("123");
+
+	EXPECT_EQ(res.resolved, false);
+	EXPECT_EQ(res.strikes, 0);
+	EXPECT_EQ(res.balls, 0);
+}
+
+TEST(TC_BASEBALL, BaseBall3)
+{
+	BaseBallGame bbg("456");
+	Result res = bbg.getResolve("645");
+
+	EXPECT_EQ(res.resolved, false);
+	EXPECT_EQ(res.strikes, 0);
+	EXPECT_EQ(res.balls, 3);
+}
+
+TEST(TC_BASEBALL, BaseBall4)
+{
+	BaseBallGame bbg("456");
+	Result res = bbg.getResolve("651");
+
+	EXPECT_EQ(res.resolved, false);
+	EXPECT_EQ(res.strikes, 1);
+	EXPECT_EQ(res.balls, 1);
+}
+
+TEST(TC_BASEBALL, BaseBall5)
+{
+	BaseBallGame bbg("456");
+	EXPECT_THROW(bbg.getResolve("12"), length_error);
+	EXPECT_THROW(bbg.getResolve("1245"), length_error);
+}
+
+TEST(TC_BASEBALL, BaseBall6)
+{
+	BaseBallGame bbg("456");
+	EXPECT_THROW(bbg.getResolve("12s"), invalid_argument);
+	EXPECT_THROW(bbg.getResolve("as2"), invalid_argument);
+}
+
+TEST(TC_BASEBALL, BaseBall7)
+{
+	BaseBallGame bbg("456");
+	EXPECT_THROW(bbg.getResolve("121"), invalid_argument);
+	EXPECT_THROW(bbg.getResolve("666"), invalid_argument);
 }

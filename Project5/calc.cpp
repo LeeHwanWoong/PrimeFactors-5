@@ -1,4 +1,6 @@
 #include <vector>
+#include <string>
+#include <stdexcept>
 using namespace std;
 
 class Calc
@@ -122,4 +124,85 @@ public:
 		return ret;
 	}
 private:
+};
+
+struct Result
+{
+	bool resolved = false;
+	int strikes = 0;
+	int balls = 0;
+};
+
+class BaseBallGame
+{
+public:
+	BaseBallGame()
+	{
+		answer[0] = '1';
+		answer[1] = '2';
+		answer[2] = '3';
+	}
+
+	BaseBallGame(string s)
+	{
+		CheckException(s);
+
+		for (int i = 0; i < 3; ++i)
+		{
+			answer[i] = s[i];
+		}
+	}
+
+	void CheckException(string s)
+	{
+		if(s.length() != 3)
+		{
+			throw length_error("length more than 3");
+		}
+		for (int i = 0; i < 3; ++i)
+		{
+			if(s[i] < '0' || s[i] > '9')
+			{
+				throw invalid_argument("must digit");
+			}
+		}
+		if(s[0] == s[1] || s[0] == s[2] || s[1] == s[2])
+		{
+			throw invalid_argument("duplicate digit");
+		}
+	}
+
+	Result getResolve(string s)
+	{
+		CheckException(s);
+
+		Result ret;
+
+		for (int i = 0; i < 3; ++i)
+		{
+			for (int j = 0; j < 3; ++j)
+			{
+				if(s[i] == answer[j])
+				{
+					if(i == j)
+					{
+						ret.strikes++;
+					}
+					else
+					{
+						ret.balls++;
+					}
+				}
+			}
+		}
+
+		if(ret.strikes >= 3)
+		{
+			ret.resolved = true;
+		}
+
+		return ret;
+	}
+private:
+	char answer[3];
 };
