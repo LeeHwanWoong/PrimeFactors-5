@@ -164,7 +164,7 @@ TEST(TC_BASEBALL, BaseBall1)
 	BaseBallGame bbg("456");
 	Result res = bbg.getResolve("456");
 
-	EXPECT_EQ(res.resolved, true);
+	EXPECT_TRUE(res.resolved);
 	EXPECT_EQ(res.strikes, 3);
 	EXPECT_EQ(res.balls, 0);
 }
@@ -174,7 +174,7 @@ TEST(TC_BASEBALL, BaseBall2)
 	BaseBallGame bbg("456");
 	Result res = bbg.getResolve("123");
 
-	EXPECT_EQ(res.resolved, false);
+	EXPECT_FALSE(res.resolved);
 	EXPECT_EQ(res.strikes, 0);
 	EXPECT_EQ(res.balls, 0);
 }
@@ -184,7 +184,7 @@ TEST(TC_BASEBALL, BaseBall3)
 	BaseBallGame bbg("456");
 	Result res = bbg.getResolve("645");
 
-	EXPECT_EQ(res.resolved, false);
+	EXPECT_FALSE(res.resolved);
 	EXPECT_EQ(res.strikes, 0);
 	EXPECT_EQ(res.balls, 3);
 }
@@ -194,7 +194,7 @@ TEST(TC_BASEBALL, BaseBall4)
 	BaseBallGame bbg("456");
 	Result res = bbg.getResolve("651");
 
-	EXPECT_EQ(res.resolved, false);
+	EXPECT_FALSE(res.resolved);
 	EXPECT_EQ(res.strikes, 1);
 	EXPECT_EQ(res.balls, 1);
 }
