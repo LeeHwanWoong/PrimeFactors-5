@@ -86,6 +86,14 @@ TEST(TestCaseName, AfterNYear)
 	EXPECT_EQ(14641, b.profit_NYear(4));
 }
 
+TEST(TestCaseName, Prime0)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	EXPECT_EQ(pf.getPrimeFactor(1), expected);
+}
+
 TEST(TestCaseName, Prime1)
 {
 	PrimeFactor pf;
