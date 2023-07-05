@@ -106,9 +106,9 @@ public:
 	{
 		vector<int> ret;
 
-		while(true)
+		while(num != 1)
 		{
-			for (int i = 2; i < num; ++i)
+			for (int i = 2; i <= num; ++i)
 			{
 				if(num % i == 0)
 				{
@@ -116,11 +116,6 @@ public:
 					ret.push_back(i);
 					break;
 				}
-			}
-
-			if(num == 1)
-			{
-				break;
 			}
 		}
 

@@ -86,7 +86,7 @@ TEST(TestCaseName, AfterNYear)
 	EXPECT_EQ(14641, b.profit_NYear(4));
 }
 
-TEST(TestCaseName, Prime)
+TEST(TestCaseName, Prime1)
 {
 	PrimeFactor pf;
 	vector<int> expected;
@@ -96,4 +96,16 @@ TEST(TestCaseName, Prime)
 	expected.push_back(3);
 
 	EXPECT_EQ(pf.getPrimeFactor(12), expected);
+}
+
+TEST(TestCaseName, Prime2)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	expected.push_back(2);
+	expected.push_back(5);
+	expected.push_back(7);
+
+	EXPECT_EQ(pf.getPrimeFactor(70), expected);
 }
