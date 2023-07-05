@@ -109,9 +109,52 @@ TEST(TestCaseName, Prime2)
 	PrimeFactor pf;
 	vector<int> expected;
 
-	expected.push_back(2);
-	expected.push_back(5);
-	expected.push_back(7);
+	expected.push_back(3);
 
-	EXPECT_EQ(pf.getPrimeFactor(70), expected);
+	EXPECT_EQ(pf.getPrimeFactor(3), expected);
+}
+
+TEST(TestCaseName, Prime3)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	expected.push_back(2);
+	expected.push_back(2);
+
+	EXPECT_EQ(pf.getPrimeFactor(4), expected);
+}
+
+TEST(TestCaseName, Prime4)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	expected.push_back(2);
+	expected.push_back(3);
+
+	EXPECT_EQ(pf.getPrimeFactor(6), expected);
+}
+
+TEST(TestCaseName, Prime5)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	expected.push_back(3);
+	expected.push_back(3);
+
+	EXPECT_EQ(pf.getPrimeFactor(9), expected);
+}
+
+TEST(TestCaseName, Prime6)
+{
+	PrimeFactor pf;
+	vector<int> expected;
+
+	expected.push_back(2);
+	expected.push_back(2);
+	expected.push_back(3);
+
+	EXPECT_EQ(pf.getPrimeFactor(12), expected);
 }
